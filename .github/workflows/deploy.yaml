@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Release API
+        if: ${{secrets.PROJECT}} === 'backend'
         uses: akhileshns/heroku-deploy@v3.0.4
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
@@ -19,6 +20,7 @@ jobs:
         env:
           HD_APP_BASE: "src/api"
       - name: Release Web Client
+        if: ${{secrets.PROJECT}} === 'frontend'
         uses: akhileshns/heroku-deploy@v3.0.4
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
