@@ -1,23 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import Axios from 'axios';
+import React, { useEffect, useState } from "react";
+import Axios from "axios";
 
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 function App() {
   const [apiStatus, setApiStatus] = useState("");
+  console.log(process.env);
+  console.log(process);
 
   useEffect(() => {
     Axios({
-      method: 'GET',
-      url: `${API_URL}/health`
-    }).then((response) => {
-      setApiStatus({ status: response.status, payload: response.data, error: null });
-    }).catch((error) => {
-      setApiStatus({ status: error.response?.status, payload: null, error: error.response?.data });
-    });
+      method: "GET",
+      url: `${API_URL}/health`,
+    })
+      .then((response) => {
+        setApiStatus({
+          status: response.status,
+          payload: response.data,
+          error: null,
+        });
+      })
+      .catch((error) => {
+        setApiStatus({
+          status: error.response?.status,
+          payload: null,
+          error: error.response?.data,
+        });
+      });
   }, []);
 
   return (
