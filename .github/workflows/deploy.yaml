@@ -9,6 +9,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Set the value
+        id: step_one
+        run: |
+            echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
+            curl https://httpbin.org/json >> $GITHUB_ENV
+            echo 'EOF' >> $GITHUB_ENV
       - uses: actions/checkout@v1
       - name: Release API
         uses: akhileshns/heroku-deploy@v3.0.4
