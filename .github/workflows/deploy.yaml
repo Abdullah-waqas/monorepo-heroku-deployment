@@ -9,28 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # - name: Print TESTVAR
-      #   run: echo `...................`
-      #   run: echo ${{github.ref}}
-      #   run: echo `...................`
-      #   run: echo ${{github}}
-      # - name: Set the value
-      #   id: step_one
-      #   run: |
-      #       echo 'JSON_RESPONSE<<EOF' >> $GITHUB_ENV
-      #       curl https://httpbin.org/json >> $GITHUB_ENV
-      #       echo 'EOF' >> $GITHUB_ENV
       - uses: actions/checkout@v1
       - name: Release API
         uses: akhileshns/heroku-deploy@v3.0.4
-        run: echo `...................`
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "wqs-api-02092020"
           heroku_email: ${{secrets.HEROKU_API_KEY}}
         env:
           HD_APP_BASE: "src/api"
-      - name: Environment
       - name: Release Web Client
         uses: akhileshns/heroku-deploy@v3.0.4
         with:
