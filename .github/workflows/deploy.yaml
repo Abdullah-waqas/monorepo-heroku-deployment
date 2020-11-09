@@ -9,10 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-        - run: echo `...................`
-        - run: echo ${{github.ref}}
-        - run: echo `...................`
-        - run: echo ${{github}}
+      - run: echo `...................`
+      - run: echo ${{github.ref}}
+      - run: echo `...................`
+      - run: echo ${{github}}
       - uses: actions/checkout@v1
       - name: Release API
         uses: akhileshns/heroku-deploy@v3.0.4
